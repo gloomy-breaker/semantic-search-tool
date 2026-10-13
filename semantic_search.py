@@ -1,14 +1,17 @@
 import os
 
-# 1. Point Python to the high-speed mirror site for the initial download
+# 1. Points python to the mirror of huggingface so that it works in China, comment out the line by adding a "# " (dont forget to add the space behind) if this is not needed
 os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 
-# Force sentence-transformers to strictly use local files and never check the internet
+# Force sentence-transformers to use local files and never check the internet, switch the 1 in the HF_HUB_OFFLINE line to 0 to temporarily allow it to check the internet and update the model
 os.environ["HF_HUB_DISABLE_TELEMETRY"] = "1"
 os.environ["HF_HUB_OFFLINE"] = "1"
 
-import re
-from sentence_transformers import SentenceTransformer, util
+import re  # Used to split the text according to punctuation into sentences
+from sentence_transformers import (
+    SentenceTransformer,
+    util,
+)  # Used to match the cleaned up sentences to numerical values and then compared to derive a similarity score.
 
 
 def main():
@@ -37,9 +40,9 @@ def main():
         print(f"[{similarity_score:.4f}] -> {best_match}")
 
         if similarity_score >= 0.22:
-            print(f"🎯 Match Found: {best_match}")
+            print(f" Match Found: {best_match}")
         else:
-            # If it fails the threshold, still show the closest guess but label it clearly!
+            # If the score falls below the threshold, a "best guess" is shown
             print("⚠️ No definitive match found. Best mathematical guess:")
             print(f"-> {best_match} (Low confidence score: {similarity_score:.4f})")
 
@@ -57,7 +60,7 @@ def matcher(word, sentence_list, model):
     for index, score in enumerate(sentence_scores):
         score_float = float(score)
         if word.lower() in sentence_list[index].lower():
-            # Artificially add a bonus to the score because it's an exact word match!
+            # Artificially add a bonus to the score because it's an exact word match to ensure that the exact word shows up if its the input, no matter the conetxt
             score_float += 0.25
         if score_float > best_score:
             best_score = score_float
