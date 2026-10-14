@@ -72,24 +72,8 @@ if __name__ == "__main__":
     main()
 
 
-# 1. Define a main function:
-#   A. Print a welcome message to the user.
-#   B. Inform the user that they should paste their text into the sample.txt file in the cuurent directory, this will be advanced upon later
-#   C. Break that large text down into individual sentences (a list of sentences) so we can check them one by one.
-#   D. Start a loop that runs forever (until stopped):
-#       i.   Prompt the user for the "search word" or phrase they want to find.
-#       ii.  Check if the user typed an exit command (like 'quit' or 'exit'). If they did, break the loop.
-#       iii. Pass the search word and the list of sentences into a helper function to calculate the match.
-#       iv.  Receive the best-matching sentence and its similarity score back from that function.
-#       v.  If the score is high enough, print the matching sentence.
-#           Otherwise, tell the user no close match was found.
-
-# 2. Define a helper function called "find_best_match" that takes (search_word, list_of_sentences):
-#   A. Import a library tool that converts text into math/vectors (like scikit-learn or sentence-transformers).
-#   B. Turn the user's search word into a vector (a list of numbers representing its meaning).
-#   C. Turn every sentence in the list into vectors.
-#   D. Use a built-in mathematical formula (like Cosine Similarity) to calculate the "distance" or score between the search word vector and each sentence vector.
-#   E. Find which sentence had the highest similarity score.
-#   F. Return that best sentence and its score back to the main function.
-
-# 3. Call the main function to start the program.
+# To do
+# 1. Allow user to use the tool from anywhere on the computer and choose a target file(still a .txt) :
+#   - Try to use sys.argv which would allow any custom file to be passed as an arguement in the terminal.
+# 2. Add supoort for markdown files
+# 3. Let the relevant word in the chosen sentence be highlighted, so that ther user knows which word from the sentence is the semmatically linked to the user's input word.
