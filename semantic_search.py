@@ -1,3 +1,4 @@
+import sys
 import os
 
 # 1. Points python to the mirror of huggingface so that it works in China, comment out the line by adding a "# " (dont forget to add the space behind) if this is not needed
@@ -16,10 +17,13 @@ from sentence_transformers import (
 
 def main():
     print("Welcome to Semantic Search")
-    print("Please paste all the text into the sample.txt file in the current directory")
     print()
     # Reads all text from a file
-    with open("sample.txt", "r") as file:
+    if len(sys.argv) < 2:
+        print("Error: Please input a target file!")
+        sys.exit(1)
+    target_file = sys.argv[1]
+    with open(target_file, "r") as file:
         source_text = file.read()
     # Splits the text that is read according to punctuation
     sentences = re.split(r"[.!?]", source_text)
@@ -70,10 +74,3 @@ def matcher(word, sentence_list, model):
 
 if __name__ == "__main__":
     main()
-
-
-# To do
-# 1. Allow user to use the tool from anywhere on the computer and choose a target file(still a .txt) :
-#   - Try to use sys.argv which would allow any custom file to be passed as an arguement in the terminal.
-# 2. Add supoort for markdown files
-# 3. Let the relevant word in the chosen sentence be highlighted, so that ther user knows which word from the sentence is the semmatically linked to the user's input word.
