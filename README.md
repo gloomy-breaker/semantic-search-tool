@@ -1,4 +1,6 @@
-# Semantic Search Tool
+--- 
+theme: jekyll-theme-cayman
+---
 
 ## What is Semantic Search
 
