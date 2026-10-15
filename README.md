@@ -14,25 +14,25 @@ First the script opens and reads the text in the sample.txt file and stores it i
 
 1. Clone the repository and navigate into it:
 
-```bash
-git clone https://github.com/gloomy-breaker/semantic-search-tool.git
-cd semantic-search-tool
-```
+    ```bash
+    git clone https://github.com/gloomy-breaker/semantic-search-tool.git
+    cd semantic-search-tool
+    ```
 
-1. Create a virtual environment where all the packages can be installed:
+2. Create a virtual environment where all the packages can be installed:
 
-```bash
-python3 -m venv .venv
-```
+    ```bash
+    python3 -m venv .venv
+    ```
 
-1. Activate the virtual environment:
+3. Activate the virtual environment:
 
-```bash
-source .venv/bin/activate
+    ```bash
+    source .venv/bin/activate
+    ```
 
-```
-1. Install the required packages:
+4. Install the required packages:
 
-```bash
-pip install -r requirements.txt
-```
+    ```bash
+    pip install -r requirements.txt
+    ```
